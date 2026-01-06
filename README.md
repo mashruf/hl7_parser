@@ -29,7 +29,7 @@ project-root
 
 ## Installation
 
-- Clone or download the folder
+- Clone or download the project
 - To run the test, install `pytest`
 - To install Pytest run following command
 
@@ -41,15 +41,50 @@ pip install pytest
 ## Sample file
 
 - Sample file will be found in `sample_data` folder.
+
 - `sample.hl7` was used to read valid data from the disk.
+
 - `sample_missing_seg.hl7` was used to read data with missing segment.
+
 - `sample_invalid_msg.hl7` was used to read data with invalid message type.
 
 ## Helper function
 
 - The helper functions will be found in `hl7_parser` folder.
+
 - `checkSegments()` function from `check_message.py` will check whether the sample message has all the required segment or not.  
+
 - `checkMessageType` function from `check_message.py` will check whether the message has the correct message type or not.
+
 - `indexOfSegment()` from `produce_data.py` was used to extract the indexes of SCH, PID and PV1 so that we can use their indexes dynamically to extract required data from the message.
+
 - `extractSchedule()` from `produce_data.py` was used to extract `appointment_id`, `appointment_reason`, `iso_time` from SCH.
+
 - `extractPatientInfo()` from `produce_data.py` was used to extract `patient_id`, `patient_first_name`, `patient_last_name`, `date_of_birth`, `patient_gender` from PID.
+
+- `extractProviderInfo()` from `produce_data.py` was used to extract `provider_id`, `provider_name`, `provider_location` from PV1.
+
+## Test
+- Testing was conducted using `pytest`
+
+- All the test files will be found in `test` folder
+
+- Testing was done using `sample_invalid_msh.hl7` and `sample_missing_seg.hl7` sample data to check whether the system shows error if the message has missing segment or does not have the required message type SIU S12.
+
+- All the value of the extracted data is returning None if the message has missing segment SCH, PID, PV1 or don't have valid message type SIU S12.
+
+## Running the project
+
+- From the base folder run following command:
+
+```
+python main.py
+```
+
+## Running test
+
+- Run the following command:
+
+```
+python -m pytest
+```
