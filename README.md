@@ -50,4 +50,6 @@ pip install pytest
 - The helper functions will be found in `hl7_parser` folder.
 - `checkSegments()` function from `check_message.py` will check whether the sample message has all the required segment or not.  
 - `checkMessageType` function from `check_message.py` will check whether the message has the correct message type or not.
-- 
+- `indexOfSegment()` from `produce_data.py` was used to extract the indexes of SCH, PID and PV1 so that we can use their indexes dynamically to extract required data from the message.
+- `extractSchedule()` from `produce_data.py` was used to extract `appointment_id`, `appointment_reason`, `iso_time` from SCH.
+- `extractPatientInfo()` from `produce_data.py` was used to extract `patient_id`, `patient_first_name`, `patient_last_name`, `date_of_birth`, `patient_gender` from PID.
